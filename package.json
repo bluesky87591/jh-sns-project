@@ -50,7 +50,7 @@
     },
     "rules": {
       "prettier/prettier": [
-        "errors",
+        "off",
         {
           "singleQuote": true,
           "semi": false

@@ -6,10 +6,10 @@
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import firebase from "./firebase";
-
 console.log("fire base ? : ");
 console.log(firebase);
 console.log("firebase");
+console.log(process.env);
 
 export default {
   name: "App",
