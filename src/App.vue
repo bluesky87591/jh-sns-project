@@ -1,20 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="nav">
+    <router-view />
+    <footer>&copy;{{ nowYear }}</footer>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import firebase from "./firebase";
-console.log("fire base ? : ");
-console.log(firebase);
-console.log("firebase");
-console.log(process.env);
+//import HelloWorld from "./components/HelloWorld.vue";
+import { defineComponent, onMounted, ref } from "vue";
+import { authService, firebase } from "@/fbase";
+import { router } from "@/router";
 
-export default {
+export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
+    // HelloWorld,
   },
-};
+  setup() {
+    console.log("fire base ? : ");
+    console.log(firebase);
+    console.log(authService.currentUser);
+    const isLoggedIn = ref(authService.currentUser);
+    const nowYear = new Date().getFullYear() + " JH SNS";
+
+    onMounted(() => {
+      router.push({
+        name: "AppRouter",
+        params: { isLoggedIn: isLoggedIn.value },
+      });
+    });
+
+    return { isLoggedIn, nowYear };
+  },
+});
 </script>
