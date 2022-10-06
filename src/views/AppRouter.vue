@@ -2,7 +2,7 @@
   <div></div>
 </template>
 <script>
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { router } from "@/router";
 import { useRoute } from "vue-router";
 export default defineComponent({
@@ -10,14 +10,14 @@ export default defineComponent({
   components: {},
   setup() {
     const route = useRoute();
-    const isLoggedIn = ref(false);
+    // const isLoggedIn = ref(false);
 
     onMounted(() => {
       console.log("onMounted App Router");
       console.log(route.params);
-      isLoggedIn.value = route.params.isLoggedIn;
+      //isLoggedIn.value = route.params.isLoggedIn;
 
-      if (isLoggedIn.value === "true") {
+      if (route.params.isLoggedIn) {
         router.push("/Home");
       } else {
         router.push("/Auth");
