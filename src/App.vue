@@ -6,16 +6,13 @@
 </template>
 
 <script>
-//import HelloWorld from "./components/HelloWorld.vue";
 import { defineComponent, onMounted, ref } from "vue";
 import { authService, firebase } from "@/fbase";
 import { router } from "@/router";
 
 export default defineComponent({
   name: "App",
-  components: {
-    // HelloWorld,
-  },
+  components: {},
   setup() {
     console.log("fire base ? : ");
     console.log(firebase);
